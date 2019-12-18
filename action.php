@@ -19,5 +19,18 @@
 
         header('location:index.php');
         $_SESSION['response'] = "Successfully inserted in DB!";
-        $_SESSION['res_type'] = "Success";
+        $_SESSION['res_type'] = "success";
     }
+
+        if (isset($_GET['delete'])) {
+            $id = $_GET['delete'];
+
+            $query = "DELETE FROM crud WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            header('location:index.php');
+            $_SESSION['response'] = "Successfully Deleted!";
+            $_SESSION['res_type'] = "danger";
+
+        }

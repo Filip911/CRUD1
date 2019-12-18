@@ -111,9 +111,9 @@
                     <td><?= $row['email']; ?></td>
                     <td><?= $row['phone']; ?></td>
                     <td>
-                       <a href="#" class="badge badge-primary p-2">Details</a> 
-                       <a href="#" class="badge badge-danger p-2">Delete</a> 
-                       <a href="#" class="badge badge-success p-2">Edit</a> 
+                       <a href="details.php?details=<?= $row['id']; ?>" class="badge badge-primary p-2">Details</a> 
+                       <a href="action.php?delete=<?= $row['id']; ?>" class="badge badge-danger p-2">Delete</a> 
+                       <a href="index.php?edit=<?= $row['id']; ?>" class="badge badge-success p-2">Edit</a> 
                     </td>
                 </tr>    
                     <?php }  ?>        
