@@ -1,5 +1,6 @@
-
-
+<?php 
+    include 'action.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,14 +52,20 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <h3 class="text-center mt-4">CRUD App Using  PHP & MySQLi prepared statements (OOP)</h3>
+                <h3 class="text-center mt-2">CRUD App Using  PHP & MySQLi prepared statements (OOP)</h3>
                 <hr>
+                <?php if(isset($_SESSION['response'])) { ?>
+                  <div class="alert alert-<?= $_SESSION['res_type']; ?> alert-dismissible text-center">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <b><?= $_SESSION['response']; ?></b>
+                  </div>
+                <?php } unset($_SESSION['response']); ?>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <h3 class="text-center text-info">Add Record</h3>
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="action.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Enter name ..." required>                       
                     </div>
@@ -77,8 +84,14 @@
                 </form>
             </div>
             <div class="col-md-8">
+                <?php 
+                    $query = "SELECT * FROM crud";
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                ?>
             <h3 class="text-center text-info">Record from Database</h3>
-            <table class="table table-bordered table-hover">
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -90,18 +103,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                    <?php while($row = $result->fetch_assoc()){  ?>
                 <tr>
-                    <td>1</td>
-                    <td><img src="" width="25"></td>
-                    <td>Filip</td>
-                    <td>filipworkrate@gmail.com</td>
-                    <td>555-333</td>
+                    <td><?= $row['id']; ?></td>
+                    <td><img src="<?= $row['photo']; ?>" width="25"></td>
+                    <td><?= $row['name']; ?></td>
+                    <td><?= $row['email']; ?></td>
+                    <td><?= $row['phone']; ?></td>
                     <td>
                        <a href="#" class="badge badge-primary p-2">Details</a> 
                        <a href="#" class="badge badge-danger p-2">Delete</a> 
                        <a href="#" class="badge badge-success p-2">Edit</a> 
                     </td>
-                </tr>            
+                </tr>    
+                    <?php }  ?>        
                 </tbody>
             </table>
             </div>
