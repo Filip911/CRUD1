@@ -78,30 +78,30 @@
             </div>
             <div class="col-md-8">
             <h3 class="text-center text-info">Record from Database</h3>
-            <table class="table">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Name</th>
                     <th>Email</th>
+                    <th>Telephone</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
+                    <td>1</td>
+                    <td><img src="" width="25"></td>
+                    <td>Filip</td>
+                    <td>filipworkrate@gmail.com</td>
+                    <td>555-333</td>
+                    <td>
+                       <a href="#" class="badge badge-primary p-2">Details</a> 
+                       <a href="#" class="badge badge-danger p-2">Delete</a> 
+                       <a href="#" class="badge badge-success p-2">Edit</a> 
+                    </td>
+                </tr>            
                 </tbody>
             </table>
             </div>
