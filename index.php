@@ -31,7 +31,7 @@
 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
             </li>
@@ -42,11 +42,70 @@
                 <a class="nav-link" href="#">About</a>
             </li>
             </ul>
-            <form class="form-inline" action="/action_page.php">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
         </div>
+        <form class="form-inline" action="/action_page.php">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+       </form>
     </nav>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h3 class="text-center mt-4">CRUD App Using  PHP & MySQLi prepared statements (OOP)</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-center text-info">Add Record</h3>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Enter name ..." required>                       
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Enter e-mail ..." required>                       
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter telephone ..." required>                       
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="image" class="custom-file">
+                    </div>
+                    <div class="form-group">  
+                        <input type="submit" name="add" class="btn btn-primary" value="Add Record">   
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8">
+            <h3 class="text-center text-info">Record from Database</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
