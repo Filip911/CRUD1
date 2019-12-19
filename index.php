@@ -67,13 +67,13 @@
                 <h3 class="text-center text-info">Add Record</h3>
                 <form action="action.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Enter name ..." required>                       
+                        <input type="text" name="name" value="<?= $name; ?>" class="form-control" placeholder="Enter name ..." required>                       
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Enter e-mail ..." required>                       
+                        <input type="email" name="email" value="<?= $email; ?>" class="form-control" placeholder="Enter e-mail ..." required>                       
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" class="form-control" placeholder="Enter telephone ..." required>                       
+                        <input type="tel" name="phone" value="<?= $phone; ?>" class="form-control" placeholder="Enter telephone ..." required>                       
                     </div>
                     <div class="form-group">
                         <input type="file" name="image" class="custom-file">
