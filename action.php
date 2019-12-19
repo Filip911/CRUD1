@@ -9,10 +9,10 @@
     $phone = "";
     $photo = "";
 
-    if(isset($_REQUEST['add'])) {
-        $name = $_REQUEST['name']; 
-        $email = $_REQUEST['email']; 
-        $phone = $_REQUEST['phone']; 
+    if(isset($_POST['add'])) {
+        $name = $_POST['name']; 
+        $email = $_POST['email']; 
+        $phone = $_POST['phone']; 
 
         $photo = $_FILES['image']['name'];
         $upload = "upload/" .$photo;
@@ -23,19 +23,18 @@
         $stmt->bind_param("ssss",$name,$email,$phone,$upload);
         $stmt->execute();
         move_uploaded_file($_FILES['image']['tmp_name'], $upload);
-
         header('location:index.php');
         $_SESSION['response'] = "Successfully inserted in DB!";
         $_SESSION['res_type'] = "success";
     }
 
-        if (isset($_REQUEST['delete'])) {
-            $id = $_REQUEST['delete'];
+        if (isset($_GET['delete'])) {
+            $id = $_GET['delete'];
 
             $sql ="SELECT photo FROM crud WHERE id=?";
             $stmt2 = $conn->prepare($sql);
             $stmt2->bind_param("i", $id);
-            $stmt2_execute();
+            $stmt2->execute();
             $result2 = $stmt2->get_result();
             $row = $result2->fetch_assoc();
 
@@ -52,8 +51,8 @@
 
         }
 
-        if (isset($_REQUEST['edit'])) {
-            $id = $_REQUEST['edit'];
+        if (isset($_GET['edit'])) {
+            $id = $_GET['edit'];
 
             $query = "SELECT * FROM crud WHERE id = ?";
             $stmt = $conn->prepare($query);
@@ -70,3 +69,29 @@
 
             $update = true;
         }
+
+        if (isset($_POST['update'])) {
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $oldimg = $_POST['oldimg'];
+
+        if (isset($_FILES['image']['name']) && ($_FILES['image']['name']!="")) {
+            $newimg = "upload/".$_FILES['image']['name'];
+            unlink($oldimg);
+            move_uploaded_file($_FILES['image']['tmp_name'], $newimg);
+          } else {
+              $newimg = $oldimg;
+          }   
+            $query = "UPDATE crud SET name=?, email=?, phone=?, photo=?, id=?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("ssssi",$name,$email,$phone,$newimg,$id);
+            $stmt->execute();
+
+            $_SESSION['response'] = "Updated successfully!";
+            $_SESSION['res_type'] = "primary";
+            header('location: index.php');
+        }
+
+        ?>

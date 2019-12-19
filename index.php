@@ -77,12 +77,12 @@
                         <input type="tel" name="phone" value="<?= $phone; ?>" class="form-control" placeholder="Enter telephone ..." required>                       
                     </div>
                     <div class="form-group">
-                    <input type="hidden" name="old-img" value="<?= $photo; ?>">
+                    <input type="hidden" name="oldimg" value="<?= $photo; ?>">
                         <input type="file" name="image" class="custom-file">
                         <img src="<?= $photo; ?>" width="100" class="img-thumbnail">
                     </div>
                     <div class="form-group">  
-                       <?php if ($update == true ) {  ?>
+                       <?php if ($update == true) {  ?>
                         <input type="submit" name="update" class="btn btn-success" value="Update Record">
                        <?php } else { ?>
                         <input type="submit" name="add" class="btn btn-primary" value="Add Record">  
@@ -123,7 +123,7 @@
                        <a href="index.php?edit=<?= $row['id']; ?>" class="badge badge-success p-2">Edit</a> 
                     </td>
                 </tr>    
-                    <?php }  ?>        
+                    <?php } ?>        
                 </tbody>
             </table>
             </div>
