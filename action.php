@@ -2,6 +2,13 @@
     session_start();
     include 'config.php';
 
+    $update = false;
+    $id = "";
+    $name = "";
+    $email = "";
+    $phone = "";
+    $photo = "";
+
     if(isset($_REQUEST['add'])) {
         $name = $_REQUEST['name']; 
         $email = $_REQUEST['email']; 
@@ -60,4 +67,6 @@
             $email = $row['email'];
             $phone = $row['phone'];
             $photo = $row['photo'];
+
+            $update = true;
         }

@@ -66,6 +66,7 @@
             <div class="col-md-4">
                 <h3 class="text-center text-info">Add Record</h3>
                 <form action="action.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="form-group">
                         <input type="text" name="name" value="<?= $name; ?>" class="form-control" placeholder="Enter name ..." required>                       
                     </div>
@@ -76,10 +77,16 @@
                         <input type="tel" name="phone" value="<?= $phone; ?>" class="form-control" placeholder="Enter telephone ..." required>                       
                     </div>
                     <div class="form-group">
+                    <input type="hidden" name="old-img" value="<?= $photo; ?>">
                         <input type="file" name="image" class="custom-file">
+                        <img src="<?= $photo; ?>" width="100" class="img-thumbnail">
                     </div>
                     <div class="form-group">  
-                        <input type="submit" name="add" class="btn btn-primary" value="Add Record">   
+                       <?php if ($update == true ) {  ?>
+                        <input type="submit" name="update" class="btn btn-success" value="Update Record">
+                       <?php } else { ?>
+                        <input type="submit" name="add" class="btn btn-primary" value="Add Record">  
+                       <?php } ?> 
                     </div>
                 </form>
             </div>
