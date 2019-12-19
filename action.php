@@ -94,4 +94,23 @@
             header('location: index.php');
         }
 
+
+        if (isset($_GET['details'])) {
+            $id = $_GET['details'];
+            $query = "SELECT * FROM crud WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            $vid = $row['id'];
+            $vname = $row['name'];
+            $vemail = $row['email'];
+            $vphone = $row['phone'];
+            $vphoto = $row['photo'];
+        }
+
+
+
         ?>
