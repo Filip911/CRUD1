@@ -15,7 +15,7 @@
         $phone = $_POST['phone']; 
 
         $photo = $_FILES['image']['name'];
-        $upload = "upload/" .$photo;
+        $upload = "Upload/" .$photo;
 
         $query = "INSERT INTO crud(name,email,phone,photo)
         VALUES (?,?,?,?)";
@@ -75,18 +75,18 @@
             $name = $_POST['name'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
-            $oldimg = $_POST['oldimg'];
+            $oldimage = $_POST['oldimage'];
 
         if (isset($_FILES['image']['name']) && ($_FILES['image']['name']!="")) {
-            $newimg = "upload/".$_FILES['image']['name'];
-            unlink($oldimg);
-            move_uploaded_file($_FILES['image']['tmp_name'], $newimg);
+            $newimage = "Upload/".$_FILES['image']['name'];
+            unlink($oldimage);
+            move_uploaded_file($_FILES['image']['tmp_name'], $newimage);
           } else {
-              $newimg = $oldimg;
+              $newimage = $oldimage;
           }   
-            $query = "UPDATE crud SET name=?, email=?, phone=?, photo=?, id=?";
+            $query = "UPDATE crud SET name=?, email=?, phone=?, photo=? WHERE id=?";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("ssssi",$name,$email,$phone,$newimg,$id);
+            $stmt->bind_param("ssssi",$name,$email,$phone,$newimage,$id);
             $stmt->execute();
 
             $_SESSION['response'] = "Updated successfully!";

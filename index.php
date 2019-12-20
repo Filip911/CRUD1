@@ -77,7 +77,7 @@
                         <input type="tel" name="phone" value="<?= $phone; ?>" class="form-control" placeholder="Enter telephone ..." required>                       
                     </div>
                     <div class="form-group">
-                    <input type="hidden" name="oldimg" value="<?= $photo; ?>">
+                    <input type="hidden" name="oldimage" value="<?= $photo; ?>">
                         <input type="file" name="image" class="custom-file">
                         <img src="<?= $photo; ?>" width="100" class="img-thumbnail">
                     </div>
